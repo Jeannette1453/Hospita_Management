@@ -16,7 +16,7 @@ public class DatabaseSetupDAO {
     public void createTables() throws SQLException {
         Statement statement = connection.createStatement();
 
-        String doctorsTable = "CREATE TABLE IF NOT EXISTS doctors (" +
+        String doctorsTable = "CREATE TABLE doctors (" +
                 "id SERIAL PRIMARY KEY," +
                 "first_name VARCHAR(50)," +
                 "last_name VARCHAR(50)," +
@@ -26,7 +26,7 @@ public class DatabaseSetupDAO {
                 "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP" +
                 ")";
 
-        String patientsTable = "CREATE TABLE IF NOT EXISTS patients (" +
+        String patientsTable = "CREATE TABLE patients (" +
                 "id SERIAL PRIMARY KEY," +
                 "first_name VARCHAR(50)," +
                 "last_name VARCHAR(50)," +
@@ -37,7 +37,7 @@ public class DatabaseSetupDAO {
                 "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP" +
                 ")";
 
-        String appointmentsTable = "CREATE TABLE IF NOT EXISTS appointments (" +
+        String appointmentsTable = "CREATE TABLE appointments (" +
                 "id SERIAL PRIMARY KEY," +
                 "doctor_id INT," +
                 "patient_id INT," +
@@ -48,7 +48,7 @@ public class DatabaseSetupDAO {
                 "FOREIGN KEY (patient_id) REFERENCES patients(id) ON DELETE CASCADE" +
                 ")";
 
-        String medicalRecordsTable = "CREATE TABLE IF NOT EXISTS medical_records (" +
+        String medicalRecordsTable = "CREATE TABLE medical_records (" +
                 "id SERIAL PRIMARY KEY," +
                 "patient_id INT," +
                 "diagnosis TEXT," +
@@ -59,7 +59,7 @@ public class DatabaseSetupDAO {
                 "FOREIGN KEY (doctor_id) REFERENCES doctors(id) ON DELETE CASCADE" +
                 ")";
 
-        String doctorPatientTable = "CREATE TABLE IF NOT EXISTS doctor_patient (" +
+        String doctorPatientTable = "CREATE TABLE doctor_patient (" +
                 "doctor_id INT," +
                 "patient_id INT," +
                 "PRIMARY KEY (doctor_id, patient_id)," +
